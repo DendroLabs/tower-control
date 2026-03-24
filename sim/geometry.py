@@ -145,5 +145,5 @@ def distance_to_runway_threshold(
     # reciprocal of the runway heading (approach direction)
     approach_heading = (runway_heading + 180.0) % 360.0
     angle_diff = brg - approach_heading
-    # Along-track component
-    return d * math.cos(_deg2rad(angle_diff))
+    # Along-track component: positive = on approach side, negative = past threshold
+    return -d * math.cos(_deg2rad(angle_diff))

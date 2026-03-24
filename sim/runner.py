@@ -21,6 +21,9 @@ SCENARIOS = [
     "sim.scenarios.s02_lga",
     "sim.scenarios.s03_dca",
     "sim.scenarios.s04_commitment_gate",
+    "sim.scenarios.s05_cvm_alert",
+    "sim.scenarios.s06_parallel_ops",
+    "sim.scenarios.s07_vfr_ifr_mix",
 ]
 
 

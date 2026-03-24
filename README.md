@@ -20,17 +20,17 @@ Both share root causes that this architecture eliminates: understaffing, combine
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  TIER 1: LLM Agents (routine operations)                       │
+│  TIER 1: LLM Agents (routine operations)                        │
 │  Initial contact, sequencing, monitoring, taxi clearances       │
-│  Runs on: DGX Spark cluster, Linux, Python/ONNX                │
+│  Runs on: DGX Spark cluster, Linux, Python/ONNX                 │
 └────────────────────┬────────────────────────────────────────────┘
                      │ Proposals (clearance requests)
                      ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  TIER 2: Deterministic Safety Net (safety-critical ops)         │
 │  Clearance validation, runway mutual exclusion, separation      │
-│  enforcement, commitment gate, collision vector monitoring       │
-│  Runs on: TMR hardware, INTEGRITY-178/VxWorks, Ada/SPARK       │
+│  enforcement, commitment gate, collision vector monitoring      │
+│  Runs on: TMR hardware, INTEGRITY-178/VxWorks, Ada/SPARK        │
 │  IN THE DATA PATH — not advisory. No bypass exists.             │
 └────────────────────┬────────────────────────────────────────────┘
                      │ Validated clearances only
@@ -99,6 +99,9 @@ python -m pytest sim/tests/ -v
 | **S02: LGA Prevention** | Fire truck crossing rejected while runway locked (R1/R2), validated after clear |
 | **S03: DCA Detection** | Untracked helicopter detected by S4 invariant, CVM alerts on convergence |
 | **S04: Commitment Gate** | Forced go-around at 2nm when approaching locked runway without clearance (F5) |
+| **S05: CVM Escalation** | Two aircraft converging head-on — CVM escalates Advisory → Warning → Critical |
+| **S06: Sequential Locks** | Vehicle crosses both runways via taxiway; each lock independent, rejected while departure holds 10R |
+| **S07: VFR/IFR Mix** | VFR pattern traffic sequenced with IFR arrival on same runway, no simultaneous lock |
 
 ### Module Structure
 

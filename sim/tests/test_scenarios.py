@@ -45,5 +45,20 @@ class TestS04CommitmentGate(ScenarioTestCase):
         self._run_scenario("sim.scenarios.s04_commitment_gate")
 
 
+class TestS05CVMAlert(ScenarioTestCase):
+    def test_scenario(self):
+        self._run_scenario("sim.scenarios.s05_cvm_alert")
+
+
+class TestS06ParallelOps(ScenarioTestCase):
+    def test_scenario(self):
+        self._run_scenario("sim.scenarios.s06_parallel_ops")
+
+
+class TestS07VFRIFRMix(ScenarioTestCase):
+    def test_scenario(self):
+        self._run_scenario("sim.scenarios.s07_vfr_ifr_mix")
+
+
 if __name__ == "__main__":
     unittest.main()
