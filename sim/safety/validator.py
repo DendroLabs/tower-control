@@ -48,6 +48,7 @@ class ClearanceValidator:
             target_entity=proposal.target_entity,
             target_entity_type=proposal.target_entity_type.value,
             parameters=proposal.parameters,
+            proposing_agent=proposal.proposing_agent,
         )
 
         # Step 2: Check invariants

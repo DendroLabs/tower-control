@@ -102,6 +102,7 @@ python -m pytest sim/tests/ -v
 | **S05: CVM Escalation** | Two aircraft converging head-on — CVM escalates Advisory → Warning → Critical |
 | **S06: Sequential Locks** | Vehicle crosses both runways via taxiway; each lock independent, rejected while departure holds 10R |
 | **S07: VFR/IFR Mix** | VFR pattern traffic sequenced with IFR arrival on same runway, no simultaneous lock |
+| **S08: LLM Ground Controller** | First LLM-backed agent — decides when to propose runway crossing, safety net validates |
 
 ### Module Structure
 
@@ -132,7 +133,10 @@ sim/
 │   └── delivery.py             # TCP-style clearance delivery (readback = ACK)
 ├── agents/
 │   ├── base.py                 # Abstract agent interface (plug-in point for AI)
-│   └── scripted.py             # Scripted scenario drivers
+│   ├── scripted.py             # Scripted scenario drivers
+│   ├── ground_controller.py    # LLM-backed ground controller (Claude API)
+│   ├── llm_client.py           # Thin Claude API wrapper (swappable for local models)
+│   └── mock_llm.py             # Deterministic mock for testing without API
 ├── scenarios/                  # Executable test scenarios
 ├── tests/                      # Unit + integration tests
 └── runner.py                   # CLI entry point
@@ -149,11 +153,14 @@ The primary design document is [ATC_AUTOMATION_REPORT.md](ATC_AUTOMATION_REPORT.
 ## Requirements
 
 - Python 3.12+ (tested on 3.14)
-- No external dependencies — standard library only
+- `anthropic` SDK (for LLM-backed agents; S01-S07 run without it)
+- `pip install -r requirements.txt`
+
+Set `ANTHROPIC_API_KEY` to run agents with the real Claude API. Without it, the mock LLM client runs deterministic rule-based logic for testing.
 
 ## Status
 
-Research and design phase. The simulation validates the formal model. No production code, no AI agents yet — the agent interface (`sim/agents/base.py`) is the plug-in point for future implementation.
+Research and design phase. The simulation validates the formal model against 8 scenarios. The first LLM-backed agent (ground controller) demonstrates the agent → safety net → clearance pipeline using Claude as the decision engine.
 
 ## License
 

@@ -64,6 +64,7 @@ class Clearance:
     target_entity: str
     target_entity_type: str  # "AIRCRAFT" or "VEHICLE"
     parameters: dict = field(default_factory=dict)
+    proposing_agent: str = ""
     state: ClearanceState = ClearanceState.PROPOSED
     lock_held: RunwayLockState | None = None
     proposed_at: float = 0.0
@@ -92,6 +93,7 @@ class ClearanceLifecycle:
         target_entity: str,
         target_entity_type: str,
         parameters: dict | None = None,
+        proposing_agent: str = "",
     ) -> Clearance:
         clr = Clearance(
             clearance_id=make_id("CLR"),
@@ -99,6 +101,7 @@ class ClearanceLifecycle:
             target_entity=target_entity,
             target_entity_type=target_entity_type,
             parameters=parameters or {},
+            proposing_agent=proposing_agent,
             state=ClearanceState.PROPOSED,
             proposed_at=self._clock.now(),
         )

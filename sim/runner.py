@@ -24,6 +24,7 @@ SCENARIOS = [
     "sim.scenarios.s05_cvm_alert",
     "sim.scenarios.s06_parallel_ops",
     "sim.scenarios.s07_vfr_ifr_mix",
+    "sim.scenarios.s08_llm_ground_controller",
 ]
 
 

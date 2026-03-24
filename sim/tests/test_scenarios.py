@@ -60,5 +60,10 @@ class TestS07VFRIFRMix(ScenarioTestCase):
         self._run_scenario("sim.scenarios.s07_vfr_ifr_mix")
 
 
+class TestS08LLMGroundController(ScenarioTestCase):
+    def test_scenario(self):
+        self._run_scenario("sim.scenarios.s08_llm_ground_controller")
+
+
 if __name__ == "__main__":
     unittest.main()
