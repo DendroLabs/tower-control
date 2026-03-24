@@ -4,13 +4,17 @@ A research and design project for replacing human air traffic controllers with a
 
 ## Why This Exists
 
-Two fatal incidents expose the limits of human-centered ATC:
+The current ATC system is not sustainable. Controller staffing has been in decline for years, facilities routinely operate below minimum staffing levels, and the volume of air traffic continues to grow. The system is already under more strain than it was designed for, and that gap is widening. The result is a rising number of near-misses — over 15,000 in recent data — and life-threatening incidents that are preventable with technology that already exists.
+
+Human controllers are good at this job. But computers would be better: they don't fatigue, don't lose situational awareness during a double shift, and can cross-check every piece of available data on every decision, every time. The goal isn't to patch the current system — it's to replace the failure-prone layer with an architecture where dangerous states are physically unreachable.
+
+Two recent fatal incidents illustrate the kinds of failures this system is designed to prevent:
 
 - **Potomac River Midair Collision** (DCA, Jan 29, 2025) — PSA Flight 5342 and an Army Black Hawk collided on approach to Reagan National. 67 killed. The helicopter was on a route too close to the approach path, ATC had combined two controller positions, and 15,000+ near-misses in the data had been ignored.
 
 - **LaGuardia Runway Collision** (LGA, March 23, 2026) — Air Canada 8646 hit a fire truck on Runway 4 during landing. 2 pilots killed. A single controller handling both tower and ground frequencies cleared the truck onto an active runway while an aircraft was on final approach.
 
-Both incidents share the same root causes: understaffing, combined positions, human attention limits, and failure to cross-check data that was already available. This project asks: what if the system made those failures physically impossible?
+Both share root causes that this architecture eliminates: understaffing, combined positions, human attention limits, and failure to cross-check data that was already available. The simulation validates the design against both incidents.
 
 ## Architecture Overview
 
